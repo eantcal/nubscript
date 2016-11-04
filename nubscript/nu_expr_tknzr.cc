@@ -82,9 +82,6 @@ void expr_tknzr_t::get_tknlst(token_list_t& tl, bool strip_comment)
         tl.data().push_back(next());
     } while (!eol());
 
-    //if (strip_comment) {
-    //    strip_comment_line(tl, _comment_line_set);
-    //}
 }
 
 
