@@ -1,0 +1,11 @@
+nuBScript NEWS -- history of user-visible changes.
+http://www.eantcal.eu/
+Author - Antonino Calderone - antonino.calderone@gmail.com - (c) 2014, 2015, 2016
+
+Please send nuBScript bug reports to <antonino.calderone@gmail.com>.
+
+Win32/64 built with VS2015 needs "Visual C++ Redistributable Packages for Visual Studio 2015"
+https://www.microsoft.com/en-us/download/details.aspx?id=48145
+
+Nov, 2016
+* Released nuBScript 1.5
