@@ -3,7 +3,7 @@ nuBScript - http://www.eantcal.eu
 (c) Antonino Calderone <antonino.calderone@gmail.com> - 2016
 -------------------------------------------------------------------------------
 
-nuBScript is an implementation of an interpreter of the BASIC programming 
+nuBScript is an implementation of an interpreter of the script programming 
 language distributed under MIT License.
 
 -------------------------------------------------------------------------------

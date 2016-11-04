@@ -1,6 +1,6 @@
 # nuBScript 
 - (c) Antonino Calderone <antonino.calderone@gmail.com> - 2016 - http://www.eantcal.eu 
-- nuBScript is an implementation of an interpreter of the BASIC programming language distributed under MIT License.
+- nuBScript is an implementation of an interpreter of the script programming language distributed under MIT License.
 
 # Features
 - Free and Open Source (distributed under MIT License)
