@@ -1,6 +1,6 @@
 ACLOCAL_AMFLAGS=-I m4
 
-SUBDIRS = nubscript nubscli 
+SUBDIRS = nubscript nubscli nubscalc
 
 #EXTRA_DIST= \
 #   *.sln \

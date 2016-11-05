@@ -33,5 +33,6 @@ AC_CONFIG_FILES([
   Makefile
   nubscript/Makefile
   nubscli/Makefile
+  nubscalc/Makefile
 ])
 AC_OUTPUT

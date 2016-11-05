@@ -37,12 +37,13 @@ nu::interpreter_t::exec_res_t nubs_exec_command(
         auto res = basic.exec_command(command);
 
         if (basic.get_and_reset_break_event())
-            printf("Code execution has been interrupted by CTRL+C\n");
+            std::cout << "Code execution has been interrupted by CTRL+C\n";
 
         if (res == nu::interpreter_t::exec_res_t::BREAKPOINT)
-            printf("Execution stopped at breakpoint, line %i.\n"
-                "Type 'cont' to continue\n",
-                basic.get_cur_line_n());
+            std::cerr << "Execution stopped at breakpoint, line " 
+                << basic.get_cur_line_n()
+                << ". Type 'cont' to continue" 
+                << std::endl;
 
         return res;
     }
@@ -51,24 +52,28 @@ nu::interpreter_t::exec_res_t nubs_exec_command(
     catch (nu::runtime_error_t& e) {
         int line = e.get_line_num();
         line = line <= 0 ? basic.get_cur_line_n() : line;
-
-        printf(
-            "Runtime Error #%i at %i %s\n", e.get_error_code(), line, e.what());
+        
+        std::cerr 
+            << "Runtime Error #" << e.get_error_code()
+            << " at " << line << ":" << e.what()
+            << std::endl;
     }
 
     // Print out Syntax Error Messages
     catch (std::exception& e) {
-        if (basic.get_cur_line_n() > 0)
-            printf("At line %i: %s\n", basic.get_cur_line_n(), e.what());
-
-        else
-            printf("%s\n", e.what());
+        if (basic.get_cur_line_n() > 0) {
+            std::cerr 
+                << "At line " << basic.get_cur_line_n() 
+                << " " << e.what() << std::endl;
+        } else {
+            std::cerr << e.what() << std::endl;
+        }
 
         return nu::interpreter_t::exec_res_t::RT_ERROR;
     }
 
     catch (...) {
-        printf("Runtime Error\n");
+        std::cerr << "Runtime Error" << std::endl;
         return nu::interpreter_t::exec_res_t::RT_ERROR;
     }
 
@@ -115,8 +120,8 @@ int nuBScript_console(int argc, char* argv[])
 
     if (command_line.empty()) {
         auto ver_str = language.version();
-        printf("%s", ver_str.c_str());
-        printf(NUBSCRIPT_MSG_STR__READY NUBSCRIPT_PROMPT_NEWLINE);
+        std::cout << ver_str.c_str();
+        std::cout << NUBSCRIPT_MSG_STR__READY NUBSCRIPT_PROMPT_NEWLINE;
     }
 
     else {
@@ -127,7 +132,6 @@ int nuBScript_console(int argc, char* argv[])
     while (1) {
         if (!first_command)
             command = nu::_os_input(stdin);
-
         else
             first_command = false;
 
@@ -139,15 +143,15 @@ int nuBScript_console(int argc, char* argv[])
 
         switch (res) {
         case nu::interpreter_t::exec_res_t::IO_ERROR:
-            printf(NUBSCRIPT_ERROR_STR__ERRORLOADING NUBSCRIPT_PROMPT_NEWLINE);
+            std::cerr << NUBSCRIPT_ERROR_STR__ERRORLOADING NUBSCRIPT_PROMPT_NEWLINE;
             break;
 
         case nu::interpreter_t::exec_res_t::SYNTAX_ERROR:
-            printf(NUBSCRIPT_ERROR_STR__SYNTAXERROR NUBSCRIPT_PROMPT_NEWLINE);
+            std::cerr << NUBSCRIPT_ERROR_STR__SYNTAXERROR NUBSCRIPT_PROMPT_NEWLINE;
             break;
 
         case nu::interpreter_t::exec_res_t::CMD_EXEC:
-            printf(NUBSCRIPT_PROMPT_STR NUBSCRIPT_PROMPT_NEWLINE);
+            std::cerr << NUBSCRIPT_PROMPT_STR NUBSCRIPT_PROMPT_NEWLINE;
             break;
 
         case nu::interpreter_t::exec_res_t::NOP:
@@ -164,10 +168,8 @@ int nuBScript_console(int argc, char* argv[])
 
 /* -------------------------------------------------------------------------- */
 
-#ifndef NUBSCRIPT_EXCLUDE_MAIN
 int main(int argc, char* argv[])
 {
     nu::create_terminal_frame(argc, argv);
     return nuBScript_console(argc, argv);
 }
-#endif
