@@ -9,12 +9,8 @@
 
 /* -------------------------------------------------------------------------- */
 
-#include "nu_builtin_help.h"
-#include "nu_exception.h"
-#include "nu_interpreter.h"
 #include "nu_os_console.h"
-#include "nu_os_std.h"
-#include "nu_terminal_frame.h"
+#include "nu_interpreter.h"
 
 #include <cassert>
 #include <iostream>
@@ -170,6 +166,5 @@ int nuBScript_console(int argc, char* argv[])
 
 int main(int argc, char* argv[])
 {
-    nu::create_terminal_frame(argc, argv);
     return nuBScript_console(argc, argv);
 }

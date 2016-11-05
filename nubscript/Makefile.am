@@ -142,8 +142,6 @@ libnubscript_la_SOURCES = \
    nu_token_list.h \
    nu_variable.cc \
    nu_variable.h \
-   nu_terminal_frame.h \
-   nu_terminal_frame.cc \
    nu_signal_handling.cc \
    nu_signal_handling.h \
    nu_generic_functor.h \

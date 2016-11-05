@@ -27,9 +27,9 @@ private:
     struct termios _oldt;
 
 public:
-    inline termios_reset_t() noexcept { tcgetattr(STDIN_FILENO, &_oldt); }
+    termios_reset_t() noexcept { tcgetattr(STDIN_FILENO, &_oldt); }
 
-    inline ~termios_reset_t() noexcept
+    ~termios_reset_t() noexcept
     {
         tcsetattr(STDIN_FILENO, TCSANOW, &_oldt);
     }
@@ -40,8 +40,7 @@ public:
 
 //! Set terminal in raw mode
 struct termios_makeraw_t : public termios_reset_t {
-public:
-    inline termios_makeraw_t() noexcept
+    termios_makeraw_t() noexcept
     {
         struct termios new_termios;
 
@@ -57,8 +56,7 @@ public:
 
 //! Disable terminal echo
 struct termios_disable_echo_t : public termios_reset_t {
-public:
-    inline termios_disable_echo_t() noexcept
+    termios_disable_echo_t() noexcept
     {
         struct termios newt;
         tcgetattr(STDIN_FILENO, &newt);
@@ -151,7 +149,6 @@ void terminal_t::edit_putc(int ch) noexcept
         if (insert_occurred) {
             std::string tail = _line.substr(_cursor, _line.length() - _cursor);
 
-            // Remark: printf -> nu::printf
             printf("%s ", tail.c_str());
             int tail_len = int(tail.length());
 
@@ -231,7 +228,6 @@ void terminal_t::edit_delete() noexcept
                 fflush(stdout);
             }
         }
-
         else {
             if ((_flag & ECHO_DIS) == 0) {
                 printf("\b \b");

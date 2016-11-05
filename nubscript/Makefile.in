@@ -149,14 +149,14 @@ am_libnubscript_la_OBJECTS = nu_global_function_tbl.lo \
 	nu_stmt_parser.lo nu_stmt_print.lo nu_stmt_sub.lo \
 	nu_stmt_expr.lo nu_stmt_function.lo nu_stmt_struct.lo \
 	nu_stmt_struct_element.lo nu_terminal.lo nu_token.lo \
-	nu_token_list.lo nu_variable.lo nu_terminal_frame.lo \
-	nu_signal_handling.lo nu_stdlib.lo nu_stmt_redim.lo \
-	nu_stmt_read.lo nu_stmt_exit_while.lo nu_stmt_while.lo \
-	nu_stmt_loop_while.lo nu_stmt_wend.lo nu_file_dscrptr_tbl.lo \
-	nu_for_loop_rtdata.lo nu_proc_scope.lo nu_rt_prog_ctx.lo \
-	nu_stmt_beep.lo nu_stmt_close.lo nu_stmt_cls.lo \
-	nu_stmt_empty.lo nu_stmt_end.lo nu_stmt_goto.lo \
-	nu_reserved_keywords.lo nu_var_scope.lo nu_variant.lo
+	nu_token_list.lo nu_variable.lo nu_signal_handling.lo \
+	nu_stdlib.lo nu_stmt_redim.lo nu_stmt_read.lo \
+	nu_stmt_exit_while.lo nu_stmt_while.lo nu_stmt_loop_while.lo \
+	nu_stmt_wend.lo nu_file_dscrptr_tbl.lo nu_for_loop_rtdata.lo \
+	nu_proc_scope.lo nu_rt_prog_ctx.lo nu_stmt_beep.lo \
+	nu_stmt_close.lo nu_stmt_cls.lo nu_stmt_empty.lo \
+	nu_stmt_end.lo nu_stmt_goto.lo nu_reserved_keywords.lo \
+	nu_var_scope.lo nu_variant.lo
 libnubscript_la_OBJECTS = $(am_libnubscript_la_OBJECTS)
 AM_V_lt = $(am__v_lt_@AM_V@)
 am__v_lt_ = $(am__v_lt_@AM_DEFAULT_V@)
@@ -510,8 +510,6 @@ libnubscript_la_SOURCES = \
    nu_token_list.h \
    nu_variable.cc \
    nu_variable.h \
-   nu_terminal_frame.h \
-   nu_terminal_frame.cc \
    nu_signal_handling.cc \
    nu_signal_handling.h \
    nu_generic_functor.h \
@@ -702,7 +700,6 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/nu_stmt_wend.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/nu_stmt_while.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/nu_terminal.Plo@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/nu_terminal_frame.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/nu_token.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/nu_token_list.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/nu_var_scope.Plo@am__quote@
