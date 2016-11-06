@@ -1,17 +1,20 @@
 -------------------------------------------------------------------------------
-nuBScript - http://www.eantcal.eu 
+nuBScript - https://sites.google.com/site/nubscript/home
 (c) Antonino Calderone <antonino.calderone@gmail.com> - 2016
 -------------------------------------------------------------------------------
 
-nuBScript is an implementation of an interpreter of the script programming 
-language distributed under MIT License.
+nuBScript programming language is a small scripting language designed to be 
+embedded in other programs allowing developers who want a convenient runtime 
+scripting language to easily implement the basic API elements needed by the 
+scripting language, then use nuBScript code from their applications. 
 
 -------------------------------------------------------------------------------
 Features
 -------------------------------------------------------------------------------
-- Free and Open Source (distributed under MIT License)
-- Fully-developed procedural programming language
-- Multiplatform
-- Built-in help
-
-
+- Free and Open Source (distributed under MIT License) 
+- Suitable for emedding in other applications. 
+- Fully-developed procedural programming language 
+- Multiplatform. Runs on 32-bit and 64-bit Linux/Windows x86/amd64 
+- CLI with Built-in help 
+- Documented
+- Suitable for embedded system
