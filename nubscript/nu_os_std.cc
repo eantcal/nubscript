@@ -193,7 +193,7 @@ void _os_mdelay(int s) { ::Sleep(s); }
 
 bool _os_change_dir(const std::string& dir)
 {
-    return FALSE != SetCurrentDirectory(dir.c_str());
+    return FALSE != SetCurrentDirectoryA(dir.c_str());
 }
 
 
@@ -202,7 +202,7 @@ bool _os_change_dir(const std::string& dir)
 std::string _os_get_working_dir()
 {
     char buf[MAX_PATH + 1] = { 0 };
-    ::GetCurrentDirectory(MAX_PATH, buf);
+    ::GetCurrentDirectoryA(MAX_PATH, buf);
     return buf;
 }
 
@@ -240,7 +240,7 @@ int _os_unsetenv(const char* var)
 
 int _os_erase_file(const std::string& filepath)
 {
-    return ::DeleteFile(filepath.c_str()) ? 0 : -1;
+    return ::DeleteFileA(filepath.c_str()) ? 0 : -1;
 }
 
 
@@ -248,7 +248,7 @@ int _os_erase_file(const std::string& filepath)
 
 int _os_make_dir(const std::string& filepath)
 {
-    return ::CreateDirectory(filepath.c_str(), NULL) ? 0 : -1;
+    return ::CreateDirectoryA(filepath.c_str(), NULL) ? 0 : -1;
 }
 
 
@@ -256,7 +256,7 @@ int _os_make_dir(const std::string& filepath)
 
 int _os_erase_dir(const std::string& filepath)
 {
-    return ::RemoveDirectory(filepath.c_str()) ? 0 : -1;
+    return ::RemoveDirectoryA(filepath.c_str()) ? 0 : -1;
 }
 
 
