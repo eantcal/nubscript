@@ -17,7 +17,7 @@
 int main(int argc, char* argv[])
 {
     if (argc != 2) {
-        std::cerr 
+        std::cerr
             << "Usage:" << std::endl
             << "  nubscal \"<expression>\"" << std::endl << std::endl
             << "  e.g. " << std::endl
@@ -35,18 +35,19 @@ int main(int argc, char* argv[])
     catch (nu::runtime_error_t& e) {
         int line = e.get_line_num();
         line = line <= 0 ? basic.get_cur_line_n() : line;
-        
-        std::cerr 
+
+        std::cerr
             << "Runtime Error #" << e.get_error_code()
             << " at " << line << ":" << e.what()
             << std::endl;
     }
     catch (std::exception& e) {
         if (basic.get_cur_line_n() > 0) {
-            std::cerr 
-                << "At line " << basic.get_cur_line_n() 
+            std::cerr
+                << "At line " << basic.get_cur_line_n()
                 << " " << e.what() << std::endl;
-        } else {
+        }
+        else {
             std::cerr << e.what() << std::endl;
         }
 

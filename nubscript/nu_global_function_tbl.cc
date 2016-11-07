@@ -1260,10 +1260,10 @@ fmap["sin"] = functor<float, _sin>;
 
 
 #define NU_DEF_FTIME(__item)                                              \
-    auto functor_get_##__item = [](rt_prog_ctx_t& ctx,                         \
-        const std::string& name, const nu::func_args_t& args) {                \
-        check_arg_num(args, 0, name);                                          \
-        return nu::variant_t(integer_t(nu::_os_get_##__item()));               \
+    auto functor_get_##__item = [](rt_prog_ctx_t& ctx,                    \
+        const std::string& name, const nu::func_args_t& args) {           \
+        check_arg_num(args, 0, name);                                     \
+        return nu::variant_t(integer_t(nu::_os_get_##__item()));          \
     };
 
         NU_DEF_FTIME(day);
@@ -1337,6 +1337,8 @@ fmap["sin"] = functor<float, _sin>;
     return *_instance;
 }
 
+
+/* -------------------------------------------------------------------------- */
 
 global_operator_tbl_t& global_operator_tbl_t::get_instance()
 {
