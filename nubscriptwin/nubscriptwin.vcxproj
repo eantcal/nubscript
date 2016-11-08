@@ -150,6 +150,7 @@
     <ClCompile Include="..\nubscript\nu_interpreter.cc" />
     <ClCompile Include="..\nubscript\nu_label_tbl.cc" />
     <ClCompile Include="..\nubscript\nu_lxa.cc" />
+    <ClCompile Include="..\nubscript\nu_hxxx_api.cc" />
     <ClCompile Include="..\nubscript\nu_os_console.cc" />
     <ClCompile Include="..\nubscript\nu_os_std.cc" />
     <ClCompile Include="..\nubscript\nu_proc_scope.cc" />
@@ -236,6 +237,7 @@
     <ClInclude Include="..\nubscript\nu_for_loop_rtdata.h" />
     <ClInclude Include="..\nubscript\nu_generic_functor.h" />
     <ClInclude Include="..\nubscript\nu_global_function_tbl.h" />
+    <ClInclude Include="..\nubscript\nu_hxxx_api.h" />
     <ClInclude Include="..\nubscript\nu_icstring.h" />
     <ClInclude Include="..\nubscript\nu_instrblock_metadata.h" />
     <ClInclude Include="..\nubscript\nu_interpreter.h" />

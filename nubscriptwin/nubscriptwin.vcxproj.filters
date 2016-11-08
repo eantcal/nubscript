@@ -252,6 +252,9 @@
     <ClCompile Include="..\nubscript\nu_variant.cc">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="..\nubscript\nu_hxxx_api.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\nubscript\nu_about.h">
@@ -549,6 +552,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\nubscript\nu_stdtype.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\nubscript\nu_hxxx_api.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

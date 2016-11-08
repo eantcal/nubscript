@@ -137,6 +137,7 @@ void stmt_read_t::run(rt_prog_ctx_t& ctx)
 
     case nu::variable_t::type_t::UNDEFINED:
     case nu::variable_t::type_t::STRUCT:
+    case nu::variable_t::type_t::ANY:
     default:
         rt_error_if(true, rt_error_code_t::E_TYPE_ILLEGAL, "Read");
         break;
@@ -190,6 +191,7 @@ void stmt_read_t::run(rt_prog_ctx_t& ctx)
             case nu::variable_t::type_t::UNDEFINED:
             case nu::variable_t::type_t::BYTEVECTOR:
             case nu::variable_t::type_t::STRUCT:
+            case nu::variable_t::type_t::ANY:
                 break;
             }
         }
@@ -250,6 +252,7 @@ void stmt_read_t::run(rt_prog_ctx_t& ctx)
 
         case nu::variable_t::type_t::UNDEFINED:
         case nu::variable_t::type_t::STRUCT:
+        case nu::variable_t::type_t::ANY:
             rt_error_if(true, rt_error_code_t::E_TYPE_ILLEGAL, "Read");
             break;
 

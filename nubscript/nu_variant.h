@@ -45,6 +45,12 @@ private:
 };
 
 
+//! Structure type
+struct any_variant_t {
+    any_variant_t() = default;
+};
+
+
 /* -------------------------------------------------------------------------- */
 
 /**
@@ -91,6 +97,9 @@ public:
 
     static bool is_integer(const std::string& value);
     static bool is_real(const std::string& value);
+
+    explicit variant_t(const any_variant_t&) : _type(type_t::ANY) 
+    {}
 
     variant_t(const struct_variant_t& value, size_t vect_size = 0)
         : variant_t(value.get(), type_t::STRUCT, vect_size)
@@ -284,6 +293,7 @@ protected:
 
         return _f_data[idx];
     }
+
 };
 
 

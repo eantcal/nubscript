@@ -36,7 +36,8 @@ struct variable_t {
         BYTEVECTOR,
         BOOLEAN,
         LONG64,
-        STRUCT
+        STRUCT,
+        ANY
     };
 
 
