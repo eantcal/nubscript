@@ -10,6 +10,8 @@ nubscli_CXXFLAGS = \
    -g 
 
 nubscli_SOURCES = \
+   nu_builtin_help.cc \
+   nu_builtin_help.h \
    main.cc
 
 AM_CXXFLAGS = ${nubscli_CXXFLAGS}

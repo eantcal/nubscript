@@ -11,6 +11,7 @@
 
 #include "nu_os_console.h"
 #include "nu_interpreter.h"
+#include "nu_builtin_help.h"
 
 #include <cassert>
 #include <iostream>
@@ -18,6 +19,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <string>
+#include <sstream>
 
 #ifdef WIN32
 #include <Windows.h>
@@ -27,7 +29,7 @@
 /* -------------------------------------------------------------------------- */
 
 nu::interpreter_t::exec_res_t nubs_exec_command(
-    nu::interpreter_t& basic, const std::string& command)
+        nu::interpreter_t& basic, const std::string& command)
 {
     try {
         auto res = basic.exec_command(command);
@@ -48,7 +50,7 @@ nu::interpreter_t::exec_res_t nubs_exec_command(
     catch (nu::runtime_error_t& e) {
         int line = e.get_line_num();
         line = line <= 0 ? basic.get_cur_line_n() : line;
-        
+
         std::cerr 
             << "Runtime Error #" << e.get_error_code()
             << " at " << line << ":" << e.what()
@@ -83,7 +85,7 @@ int nuBScript_console(int argc, char* argv[])
 {
     nu::_os_cls();
 
-    nu::interpreter_t language;
+    nu::interpreter_t interpreter;
     std::string command_line;
     bool first_command = false;
 
@@ -95,15 +97,15 @@ int nuBScript_console(int argc, char* argv[])
 
             if (argc > 1 && param.size() == 2 && param.c_str()[0] == '-') {
                 switch (param.c_str()[1]) {
-                case NUBSCRIPT_EXEC_MACRO:
-                    param = "EXEC \"" + std::string(argv[++i]) + "\"";
-                    --argc;
-                    break;
+                    case NUBSCRIPT_EXEC_MACRO:
+                        param = "EXEC \"" + std::string(argv[++i]) + "\"";
+                        --argc;
+                        break;
 
-                case NUBSCRIPT_LOAD_MACRO:
-                    param = "LOAD \"" + std::string(argv[++i]) + "\"";
-                    --argc;
-                    break;
+                    case NUBSCRIPT_LOAD_MACRO:
+                        param = "LOAD \"" + std::string(argv[++i]) + "\"";
+                        --argc;
+                        break;
                 }
             }
 
@@ -115,7 +117,7 @@ int nuBScript_console(int argc, char* argv[])
     std::string command;
 
     if (command_line.empty()) {
-        auto ver_str = language.version();
+        auto ver_str = interpreter.version();
         std::cout << ver_str.c_str();
         std::cout << NUBSCRIPT_MSG_STR__READY NUBSCRIPT_PROMPT_NEWLINE;
     }
@@ -134,27 +136,46 @@ int nuBScript_console(int argc, char* argv[])
         if (command.empty())
             continue;
 
-        language.get_and_reset_break_event();
-        auto res = nubs_exec_command(language, command);
+        std::stringstream ss;
+        ss << command;
+
+        std::string cmd;
+        ss >> cmd;
+
+        if (cmd == "help") {
+            cmd.clear();
+            ss >> cmd;
+            std::cout << nu::builtin_help_t::get_instance().help(cmd) << std::endl;
+            continue;
+        }
+        else if (cmd == "apropos") {
+            cmd.clear();
+            ss >> cmd;
+            std::cout << nu::builtin_help_t::get_instance().apropos(cmd) << std::endl;
+            continue;
+        }
+
+        interpreter.get_and_reset_break_event();
+        auto res = nubs_exec_command(interpreter, command);
 
         switch (res) {
-        case nu::interpreter_t::exec_res_t::IO_ERROR:
-            std::cerr << NUBSCRIPT_ERROR_STR__ERRORLOADING NUBSCRIPT_PROMPT_NEWLINE;
-            break;
+            case nu::interpreter_t::exec_res_t::IO_ERROR:
+                std::cerr << NUBSCRIPT_ERROR_STR__ERRORLOADING NUBSCRIPT_PROMPT_NEWLINE;
+                break;
 
-        case nu::interpreter_t::exec_res_t::SYNTAX_ERROR:
-            std::cerr << NUBSCRIPT_ERROR_STR__SYNTAXERROR NUBSCRIPT_PROMPT_NEWLINE;
-            break;
+            case nu::interpreter_t::exec_res_t::SYNTAX_ERROR:
+                std::cerr << NUBSCRIPT_ERROR_STR__SYNTAXERROR NUBSCRIPT_PROMPT_NEWLINE;
+                break;
 
-        case nu::interpreter_t::exec_res_t::CMD_EXEC:
-            std::cerr << NUBSCRIPT_PROMPT_STR NUBSCRIPT_PROMPT_NEWLINE;
-            break;
+            case nu::interpreter_t::exec_res_t::CMD_EXEC:
+                std::cerr << NUBSCRIPT_PROMPT_STR NUBSCRIPT_PROMPT_NEWLINE;
+                break;
 
-        case nu::interpreter_t::exec_res_t::NOP:
-        case nu::interpreter_t::exec_res_t::BREAKPOINT:
-        case nu::interpreter_t::exec_res_t::RT_ERROR:
-        case nu::interpreter_t::exec_res_t::UPDATE_PROG:
-            break;
+            case nu::interpreter_t::exec_res_t::NOP:
+            case nu::interpreter_t::exec_res_t::BREAKPOINT:
+            case nu::interpreter_t::exec_res_t::RT_ERROR:
+            case nu::interpreter_t::exec_res_t::UPDATE_PROG:
+                break;
         }
     }
 

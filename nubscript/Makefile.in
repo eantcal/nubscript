@@ -136,27 +136,27 @@ am_libnubscript_la_OBJECTS = nu_global_function_tbl.lo \
 	nu_expr_function.lo nu_expr_unary_op.lo nu_expr_parser.lo \
 	nu_expr_syntax_tree.lo nu_expr_subscrop.lo nu_expr_tknzr.lo \
 	nu_expr_var.lo nu_icstring.lo nu_instrblock_metadata.lo \
-	nu_interpreter.lo nu_program.lo nu_lxa.lo nu_builtin_help.lo \
-	nu_os_console.lo nu_os_std.lo nu_label_tbl.lo nu_prog_ctx.lo \
-	nu_stmt_block.lo nu_stmt_call.lo nu_stmt_delay.lo \
-	nu_stmt_const.lo nu_stmt_dim.lo nu_stmt_do.lo \
-	nu_stmt_endsub.lo nu_stmt_endfunction.lo nu_stmt_endstruct.lo \
-	nu_stmt_else.lo nu_stmt_for_to_step.lo nu_stmt_exit_do.lo \
-	nu_stmt_exit_for.lo nu_stmt_exit_sub.lo nu_stmt_gosub.lo \
-	nu_stmt_endif.lo nu_stmt.lo nu_stmt_if_then_else.lo \
-	nu_stmt_input.lo nu_stmt_input_file.lo nu_stmt_let.lo \
-	nu_stmt_locate.lo nu_stmt_next.lo nu_stmt_on_goto.lo \
-	nu_stmt_open.lo nu_stmt_parser.lo nu_stmt_print.lo \
-	nu_stmt_sub.lo nu_stmt_expr.lo nu_stmt_function.lo \
-	nu_stmt_struct.lo nu_stmt_struct_element.lo nu_terminal.lo \
-	nu_token.lo nu_token_list.lo nu_variable.lo \
-	nu_signal_handling.lo nu_stdlib.lo nu_stmt_redim.lo \
-	nu_stmt_read.lo nu_stmt_exit_while.lo nu_stmt_while.lo \
-	nu_stmt_loop_while.lo nu_stmt_wend.lo nu_file_dscrptr_tbl.lo \
-	nu_for_loop_rtdata.lo nu_proc_scope.lo nu_rt_prog_ctx.lo \
-	nu_stmt_beep.lo nu_stmt_close.lo nu_stmt_cls.lo \
-	nu_stmt_empty.lo nu_stmt_end.lo nu_stmt_goto.lo \
-	nu_reserved_keywords.lo nu_var_scope.lo nu_variant.lo
+	nu_interpreter.lo nu_program.lo nu_lxa.lo nu_os_console.lo \
+	nu_os_std.lo nu_label_tbl.lo nu_prog_ctx.lo nu_stmt_block.lo \
+	nu_stmt_call.lo nu_stmt_delay.lo nu_stmt_const.lo \
+	nu_stmt_dim.lo nu_stmt_do.lo nu_stmt_endsub.lo \
+	nu_stmt_endfunction.lo nu_stmt_endstruct.lo nu_stmt_else.lo \
+	nu_stmt_for_to_step.lo nu_stmt_exit_do.lo nu_stmt_exit_for.lo \
+	nu_stmt_exit_sub.lo nu_stmt_gosub.lo nu_stmt_endif.lo \
+	nu_stmt.lo nu_stmt_if_then_else.lo nu_stmt_input.lo \
+	nu_stmt_input_file.lo nu_stmt_let.lo nu_stmt_locate.lo \
+	nu_stmt_next.lo nu_stmt_on_goto.lo nu_stmt_open.lo \
+	nu_stmt_parser.lo nu_stmt_print.lo nu_stmt_sub.lo \
+	nu_stmt_expr.lo nu_stmt_function.lo nu_stmt_struct.lo \
+	nu_stmt_struct_element.lo nu_terminal.lo nu_token.lo \
+	nu_token_list.lo nu_variable.lo nu_signal_handling.lo \
+	nu_stdlib.lo nu_stmt_redim.lo nu_stmt_read.lo \
+	nu_stmt_exit_while.lo nu_stmt_while.lo nu_stmt_loop_while.lo \
+	nu_stmt_wend.lo nu_file_dscrptr_tbl.lo nu_for_loop_rtdata.lo \
+	nu_proc_scope.lo nu_rt_prog_ctx.lo nu_stmt_beep.lo \
+	nu_stmt_close.lo nu_stmt_cls.lo nu_stmt_empty.lo \
+	nu_stmt_end.lo nu_stmt_goto.lo nu_reserved_keywords.lo \
+	nu_var_scope.lo nu_variant.lo
 libnubscript_la_OBJECTS = $(am_libnubscript_la_OBJECTS)
 AM_V_lt = $(am__v_lt_@AM_V@)
 am__v_lt_ = $(am__v_lt_@AM_DEFAULT_V@)
@@ -418,8 +418,6 @@ libnubscript_la_SOURCES = \
    nu_program.h \
    nu_lxa.cc \
    nu_lxa.h \
-   nu_builtin_help.cc \
-   nu_builtin_help.h \
    nu_os_console.cc \
    nu_os_console.h \
    nu_os_std.cc \
@@ -630,7 +628,6 @@ mostlyclean-compile:
 distclean-compile:
 	-rm -f *.tab.c
 
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/nu_builtin_help.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/nu_error_codes.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/nu_eval_expr.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/nu_expr_function.Plo@am__quote@

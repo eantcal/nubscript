@@ -50,8 +50,6 @@ libnubscript_la_SOURCES = \
    nu_program.h \
    nu_lxa.cc \
    nu_lxa.h \
-   nu_builtin_help.cc \
-   nu_builtin_help.h \
    nu_os_console.cc \
    nu_os_console.h \
    nu_os_std.cc \

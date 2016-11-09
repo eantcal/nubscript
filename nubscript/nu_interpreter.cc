@@ -11,7 +11,6 @@
 
 #include "nu_interpreter.h"
 #include "nu_about.h"
-#include "nu_builtin_help.h"
 #include "nu_os_console.h"
 #include "nu_os_std.h"
 #include "nu_program.h"
@@ -833,35 +832,6 @@ interpreter_t::exec_res_t interpreter_t::exec_command(const std::string& cmd)
         if (cmd == "pwd") {
             std::string wd = _os_get_working_dir();
             fprintf(get_stdout_ptr(), "%s\n", wd.c_str());
-
-            return exec_res_t::CMD_EXEC;
-        }
-
-        if (cmd == "help") {
-            std::string help_content;
-
-            token = tknzr.next();
-            skip_blank(tknzr, token);
-
-            help_content = builtin_help_t::get_instance().help(
-                token.type() != tkncl_t::UNDEFINED ? token.identifier() : "");
-
-            fprintf(get_stdout_ptr(), "%s\n", help_content.c_str());
-
-            return exec_res_t::CMD_EXEC;
-        }
-
-
-        if (cmd == "apropos") {
-            std::string help_content;
-
-            token = tknzr.next();
-            skip_blank(tknzr, token);
-
-            help_content = builtin_help_t::get_instance().apropos(
-                token.type() != tkncl_t::UNDEFINED ? token.identifier() : "");
-
-            fprintf(get_stdout_ptr(), "%s\n", help_content.c_str());
 
             return exec_res_t::CMD_EXEC;
         }

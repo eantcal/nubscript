@@ -68,6 +68,7 @@ void stmt_input_t::run(rt_prog_ctx_t& ctx)
                 t = variable_t::type_by_name(name);
 
             switch (t) {
+            case variant_t::type_t::ANY:
             case variant_t::type_t::UNDEFINED:
             case variant_t::type_t::STRUCT:
                 rt_error_code_t::get_instance().throw_if(true,
@@ -183,6 +184,7 @@ void stmt_input_t::run(rt_prog_ctx_t& ctx)
 
                 break;
 
+            case variant_t::type_t::ANY:
             case variant_t::type_t::UNDEFINED:
             case variant_t::type_t::STRUCT:
                 rt_error_code_t::get_instance().throw_if(true,

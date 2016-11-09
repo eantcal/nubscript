@@ -104,7 +104,8 @@ CONFIG_CLEAN_FILES =
 CONFIG_CLEAN_VPATH_FILES =
 am__installdirs = "$(DESTDIR)$(sbindir)"
 PROGRAMS = $(sbin_PROGRAMS)
-am_nubscli_OBJECTS = nubscli-main.$(OBJEXT)
+am_nubscli_OBJECTS = nubscli-nu_builtin_help.$(OBJEXT) \
+	nubscli-main.$(OBJEXT)
 nubscli_OBJECTS = $(am_nubscli_OBJECTS)
 nubscli_DEPENDENCIES =
 AM_V_lt = $(am__v_lt_@AM_V@)
@@ -148,6 +149,24 @@ AM_V_CXXLD = $(am__v_CXXLD_@AM_V@)
 am__v_CXXLD_ = $(am__v_CXXLD_@AM_DEFAULT_V@)
 am__v_CXXLD_0 = @echo "  CXXLD   " $@;
 am__v_CXXLD_1 = 
+COMPILE = $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) \
+	$(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS)
+LTCOMPILE = $(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) \
+	$(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) \
+	$(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) \
+	$(AM_CFLAGS) $(CFLAGS)
+AM_V_CC = $(am__v_CC_@AM_V@)
+am__v_CC_ = $(am__v_CC_@AM_DEFAULT_V@)
+am__v_CC_0 = @echo "  CC      " $@;
+am__v_CC_1 = 
+CCLD = $(CC)
+LINK = $(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) \
+	$(LIBTOOLFLAGS) --mode=link $(CCLD) $(AM_CFLAGS) $(CFLAGS) \
+	$(AM_LDFLAGS) $(LDFLAGS) -o $@
+AM_V_CCLD = $(am__v_CCLD_@AM_V@)
+am__v_CCLD_ = $(am__v_CCLD_@AM_DEFAULT_V@)
+am__v_CCLD_0 = @echo "  CCLD    " $@;
+am__v_CCLD_1 = 
 SOURCES = $(nubscli_SOURCES)
 DIST_SOURCES = $(nubscli_SOURCES)
 RECURSIVE_TARGETS = all-recursive check-recursive cscopelist-recursive \
@@ -351,6 +370,8 @@ nubscli_CXXFLAGS = \
    -g 
 
 nubscli_SOURCES = \
+   nu_builtin_help.cc \
+   nu_builtin_help.h \
    main.cc
 
 
@@ -452,6 +473,7 @@ distclean-compile:
 	-rm -f *.tab.c
 
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/nubscli-main.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/nubscli-nu_builtin_help.Po@am__quote@
 
 .cc.o:
 @am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXXCOMPILE) -MT $@ -MD -MP -MF $(DEPDIR)/$*.Tpo -c -o $@ $<
@@ -473,6 +495,20 @@ distclean-compile:
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='$<' object='$@' libtool=yes @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(LTCXXCOMPILE) -c -o $@ $<
+
+nubscli-nu_builtin_help.o: nu_builtin_help.cc
+@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(nubscli_CXXFLAGS) $(CXXFLAGS) -MT nubscli-nu_builtin_help.o -MD -MP -MF $(DEPDIR)/nubscli-nu_builtin_help.Tpo -c -o nubscli-nu_builtin_help.o `test -f 'nu_builtin_help.cc' || echo '$(srcdir)/'`nu_builtin_help.cc
+@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/nubscli-nu_builtin_help.Tpo $(DEPDIR)/nubscli-nu_builtin_help.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='nu_builtin_help.cc' object='nubscli-nu_builtin_help.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(nubscli_CXXFLAGS) $(CXXFLAGS) -c -o nubscli-nu_builtin_help.o `test -f 'nu_builtin_help.cc' || echo '$(srcdir)/'`nu_builtin_help.cc
+
+nubscli-nu_builtin_help.obj: nu_builtin_help.cc
+@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(nubscli_CXXFLAGS) $(CXXFLAGS) -MT nubscli-nu_builtin_help.obj -MD -MP -MF $(DEPDIR)/nubscli-nu_builtin_help.Tpo -c -o nubscli-nu_builtin_help.obj `if test -f 'nu_builtin_help.cc'; then $(CYGPATH_W) 'nu_builtin_help.cc'; else $(CYGPATH_W) '$(srcdir)/nu_builtin_help.cc'; fi`
+@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/nubscli-nu_builtin_help.Tpo $(DEPDIR)/nubscli-nu_builtin_help.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='nu_builtin_help.cc' object='nubscli-nu_builtin_help.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(nubscli_CXXFLAGS) $(CXXFLAGS) -c -o nubscli-nu_builtin_help.obj `if test -f 'nu_builtin_help.cc'; then $(CYGPATH_W) 'nu_builtin_help.cc'; else $(CYGPATH_W) '$(srcdir)/nu_builtin_help.cc'; fi`
 
 nubscli-main.o: main.cc
 @am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(nubscli_CXXFLAGS) $(CXXFLAGS) -MT nubscli-main.o -MD -MP -MF $(DEPDIR)/nubscli-main.Tpo -c -o nubscli-main.o `test -f 'main.cc' || echo '$(srcdir)/'`main.cc
