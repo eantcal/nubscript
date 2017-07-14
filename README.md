@@ -1,6 +1,6 @@
 # nuBScript 
 - nuBScript - https://sites.google.com/site/nubscript/home
-- (c) Antonino Calderone <antonino.calderone@gmail.com> - 2016
+- (c) Antonino Calderone <antonino.calderone@gmail.com> - 2016-2017
 
 nuBScript programming language is a small scripting language designed to be 
 embedded in other programs allowing developers who want a convenient runtime 
@@ -17,7 +17,7 @@ scripting language, then use nuBScript code from their applications.
 - Suitable for embedded system
 
 # The MIT License (MIT)
-Copyright (c) 2016 Antonino Calderone (antonino.calderone@gmail.com)
+Copyright (c) Antonino Calderone (antonino.calderone@gmail.com)
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of 
 this software and associated documentation files (the "Software"), to deal in the 
