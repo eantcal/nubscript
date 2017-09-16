@@ -198,9 +198,7 @@ void _os_cursor_visible(bool on) { _cur_info.set_cur_state(on); }
 
 
 /* -------------------------------------------------------------------------- */
-
-#else /*--------------- LINUX                                                  \
-         ------------------------------------------------*/
+#else /*--------------- LINUX / MAC ------------------------------------------*/
 
 
 /* -------------------------------------------------------------------------- */
@@ -210,7 +208,9 @@ void _os_cursor_visible(bool on) { _cur_info.set_cur_state(on); }
 
 #include <fcntl.h>
 #include <stdio.h>
+#ifdef __linux__
 #include <stdio_ext.h>
+#endif
 #include <stdlib.h>
 #include <termios.h>
 #include <unistd.h>
