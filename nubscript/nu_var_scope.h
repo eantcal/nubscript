@@ -50,7 +50,7 @@ public:
         std::stringstream& ss, var_scope_t& obj);
 
 protected:
-    virtual void get_err_msg(const std::string& key, std::string& err) const;
+    void get_err_msg(const std::string& key, std::string& err) const override;
 };
 
 

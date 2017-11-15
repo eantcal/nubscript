@@ -37,14 +37,12 @@ public:
     using stmt_num_t = prog_pointer_t::stmt_number_t;
 
 
-    runnable_t()
-    {
+    runnable_t() {
         signal_mgr_t::instance().register_handler(event_t::BREAK, this);
     }
 
 
-    virtual ~runnable_t()
-    {
+    virtual ~runnable_t() {
         signal_mgr_t::instance().unregister_handler(event_t::BREAK, this);
     }
 
@@ -61,19 +59,13 @@ public:
 
 
 protected:
-    virtual bool notify(const event_t& ev) override
-    {
+    virtual bool notify(const event_t& ev) override {
         _break_event = ev == event_t::BREAK;
         return true;
     }
 
-
     bool break_event() const noexcept { return _break_event; }
-
-
     void reset_break_event() noexcept { _break_event = false; }
-
-
     void set_break_event() noexcept { _break_event = true; }
 
 
